@@ -7,10 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "ALv2",
   "dependencies": {
-    "fibers": "^1.0.6",
-    "neuraln": "git+https://github.com/cloppy/neuraln.git",
-    "seek-bzip": "^1.0.4"
+    "split": "^1.0.0"
   }
 }
