@@ -13,16 +13,17 @@ var start = new Date().getTime();
 outputStream.on('data', function(reddit_post) {
   k++;
   reddit_post.body.toLowerCase().split(' ').forEach(function(token){
-  //ignore everything which is not clearly a word
-  //we use Latin1 letters, this excludes a lot of alphabets, but there's not an easy way to manage them, Reddit is mostly in English and for Chinese and Japanese we'd need a tokenizer in any case
-  if(!(/^[a-z\u00C0-\u00ff]+$/g).test(token)){
-    return;
-  }
-  if(wordCount[token])
-    wordCount[token]++;
-  else
-    wordCount[token] = 1;
+    //ignore everything which is not clearly a word
+    //we use Latin1 letters, this excludes a lot of alphabets, but there's not an easy way to manage them, Reddit is mostly in English and for Chinese and Japanese we'd need a tokenizer in any case
+    if(!(/^[a-z\u00C0-\u00ff]+$/g).test(token)){
+      return;
+    }
+    if(wordCount[token])
+      wordCount[token]++;
+    else
+      wordCount[token] = 1;
   });
+
   if(k % 5000 === 0){
     var elapsed = (new Date().getTime()-start)/1000;
     console.log("processed "+k+" posts, current dictionary of "+Object.keys(wordCount).length+" distinct words. "+(k/elapsed)+" posts per second");
